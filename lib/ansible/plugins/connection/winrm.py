@@ -668,7 +668,7 @@ class Connection(ConnectionBase):
                 try:
                     script = '''
                         $path = '%(path)s'
-                        If (Test-Path -Path $path -PathType Leaf)
+                        If (Test-Path -LiteralPath $path -PathType Leaf)
                         {
                             $buffer_size = %(buffer_size)d
                             $offset = %(offset)d
@@ -683,7 +683,7 @@ class Connection(ConnectionBase):
                             }
                             $stream.Close() > $null
                         }
-                        ElseIf (Test-Path -Path $path -PathType Container)
+                        ElseIf (Test-Path -LiteralPath $path -PathType Container)
                         {
                             Write-Host "[DIR]";
                         }
